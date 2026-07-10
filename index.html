@@ -29,7 +29,7 @@
 
     body {
       padding: 40px;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     header,
@@ -45,13 +45,20 @@
     }
 
     .carousel-section {
-      margin-bottom: 80px;
+      margin-bottom: 96px;
     }
 
     .carousel-section h2 {
-      margin: 0 0 18px;
+      margin: 0 0 8px;
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .section-description {
+      max-width: 720px;
+      margin: 0 0 24px;
+      color: #555555;
       font-size: 1rem;
-      font-weight: 600;
     }
 
     .carousel {
@@ -121,11 +128,27 @@
       right: 18px;
     }
 
+    .carousel-footer {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      padding-top: 18px;
+    }
+
+    .image-description {
+      max-width: 760px;
+      margin: 0;
+      color: #333333;
+      font-size: 0.95rem;
+    }
+
     .carousel-dots {
       display: flex;
+      flex-shrink: 0;
       justify-content: center;
       gap: 9px;
-      padding-top: 16px;
+      padding-top: 5px;
     }
 
     .carousel-dot {
@@ -152,7 +175,11 @@
       }
 
       .carousel-section {
-        margin-bottom: 56px;
+        margin-bottom: 64px;
+      }
+
+      .carousel-track {
+        aspect-ratio: 4 / 3;
       }
 
       .carousel-button {
@@ -167,6 +194,15 @@
       .carousel-button.next {
         right: 10px;
       }
+
+      .carousel-footer {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .carousel-dots {
+        align-self: center;
+      }
     }
   </style>
 </head>
@@ -180,18 +216,41 @@
     <section class="carousel-section">
       <h2>Exterior</h2>
 
+      <p class="section-description">
+        A compact, self-contained structure designed for remote landscapes,
+        combining a minimal form with a durable metal exterior.
+      </p>
+
       <div class="carousel" aria-label="Exterior image gallery">
         <div class="carousel-track">
-          <figure class="slide active">
-            <img src="1.png" alt="The box in a snowy mountain landscape">
+          <figure
+            class="slide active"
+            data-description="The box sits beside a glacial lake, surrounded by snow-covered mountains and rocky terrain."
+          >
+            <img
+              src="1.png"
+              alt="The box in a snowy mountain landscape"
+            >
           </figure>
 
-          <figure class="slide">
-            <img src="2.png" alt="Side view of the box beside a glacial lake">
+          <figure
+            class="slide"
+            data-description="A side view reveals the smooth metal exterior, narrow profile and reflective surface of the structure."
+          >
+            <img
+              src="2.png"
+              alt="Side view of the box beside a glacial lake"
+            >
           </figure>
 
-          <figure class="slide">
-            <img src="3.png" alt="Front view of the box in the mountains">
+          <figure
+            class="slide"
+            data-description="The full-width exterior elevation shows the modular panel system and simple rectangular geometry."
+          >
+            <img
+              src="3.png"
+              alt="Front view of the box in the mountains"
+            >
           </figure>
         </div>
 
@@ -212,27 +271,54 @@
         </button>
       </div>
 
-      <div
-        class="carousel-dots"
-        aria-label="Choose exterior image"
-      ></div>
+      <div class="carousel-footer">
+        <p class="image-description"></p>
+
+        <div
+          class="carousel-dots"
+          aria-label="Choose exterior image"
+        ></div>
+      </div>
     </section>
 
     <section class="carousel-section">
       <h2>Interior</h2>
 
+      <p class="section-description">
+        The interior uses bright surfaces, concealed storage and efficient
+        layouts to create a calm living environment within a compact footprint.
+      </p>
+
       <div class="carousel" aria-label="Interior image gallery">
         <div class="carousel-track">
-          <figure class="slide active">
-            <img src="4.png" alt="Minimal bedroom inside the box">
+          <figure
+            class="slide active"
+            data-description="The bedroom faces the landscape through a large window, with a low bed and uninterrupted white surfaces."
+          >
+            <img
+              src="4.png"
+              alt="Minimal bedroom inside the box"
+            >
           </figure>
 
-          <figure class="slide">
-            <img src="5.png" alt="Minimal bathroom inside the box">
+          <figure
+            class="slide"
+            data-description="The bathroom includes a compact sink, shower and concealed sliding door within a clean, minimal layout."
+          >
+            <img
+              src="5.png"
+              alt="Minimal bathroom inside the box"
+            >
           </figure>
 
-          <figure class="slide">
-            <img src="6.png" alt="Minimal kitchen inside the box">
+          <figure
+            class="slide"
+            data-description="The kitchen provides full-length worktops, integrated appliances and storage on both sides of the room."
+          >
+            <img
+              src="6.png"
+              alt="Minimal kitchen inside the box"
+            >
           </figure>
         </div>
 
@@ -253,27 +339,54 @@
         </button>
       </div>
 
-      <div
-        class="carousel-dots"
-        aria-label="Choose interior image"
-      ></div>
+      <div class="carousel-footer">
+        <p class="image-description"></p>
+
+        <div
+          class="carousel-dots"
+          aria-label="Choose interior image"
+        ></div>
+      </div>
     </section>
 
     <section class="carousel-section">
       <h2>Systems</h2>
 
+      <p class="section-description">
+        The building systems are organized inside a service module containing
+        ventilation, plumbing, water treatment, electrical and climate-control equipment.
+      </p>
+
       <div class="carousel" aria-label="Mechanical systems image gallery">
         <div class="carousel-track">
-          <figure class="slide active">
-            <img src="7.png" alt="Complete mechanical system inside the box">
+          <figure
+            class="slide active"
+            data-description="The complete service module combines pipes, tanks, controls and ventilation equipment inside one metal enclosure."
+          >
+            <img
+              src="7.png"
+              alt="Complete mechanical system inside the box"
+            >
           </figure>
 
-          <figure class="slide">
-            <img src="8.png" alt="Close-up of pipes and mechanical equipment">
+          <figure
+            class="slide"
+            data-description="A detailed view of the plumbing network shows tanks, valves, gauges and distribution pipes."
+          >
+            <img
+              src="8.png"
+              alt="Close-up of pipes and mechanical equipment"
+            >
           </figure>
 
-          <figure class="slide">
-            <img src="9.png" alt="Close-up of ventilation and electrical equipment">
+          <figure
+            class="slide"
+            data-description="The ventilation section contains ductwork, filtration equipment and enclosed electrical controls."
+          >
+            <img
+              src="9.png"
+              alt="Close-up of ventilation and electrical equipment"
+            >
           </figure>
         </div>
 
@@ -294,10 +407,14 @@
         </button>
       </div>
 
-      <div
-        class="carousel-dots"
-        aria-label="Choose systems image"
-      ></div>
+      <div class="carousel-footer">
+        <p class="image-description"></p>
+
+        <div
+          class="carousel-dots"
+          aria-label="Choose systems image"
+        ></div>
+      </div>
     </section>
   </main>
 
@@ -308,6 +425,7 @@
       const previousButton = section.querySelector(".previous");
       const nextButton = section.querySelector(".next");
       const dotsContainer = section.querySelector(".carousel-dots");
+      const description = section.querySelector(".image-description");
 
       let currentIndex = 0;
       let touchStartX = 0;
@@ -332,18 +450,21 @@
         currentIndex = (index + slides.length) % slides.length;
 
         slides.forEach((slide, slideIndex) => {
-          slide.classList.toggle(
-            "active",
-            slideIndex === currentIndex
-          );
+          const isActive = slideIndex === currentIndex;
+
+          slide.classList.toggle("active", isActive);
+          slide.setAttribute("aria-hidden", String(!isActive));
         });
 
         dots.forEach((dot, dotIndex) => {
-          dot.classList.toggle(
-            "active",
-            dotIndex === currentIndex
-          );
+          const isActive = dotIndex === currentIndex;
+
+          dot.classList.toggle("active", isActive);
+          dot.setAttribute("aria-current", isActive ? "true" : "false");
         });
+
+        description.textContent =
+          slides[currentIndex].dataset.description;
       }
 
       previousButton.addEventListener("click", () => {
@@ -372,11 +493,11 @@
             return;
           }
 
-          if (distance > 0) {
-            showSlide(currentIndex - 1);
-          } else {
-            showSlide(currentIndex + 1);
-          }
+          showSlide(
+            distance > 0
+              ? currentIndex - 1
+              : currentIndex + 1
+          );
         },
         { passive: true }
       );
