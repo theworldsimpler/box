@@ -2,14 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Box</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Box is a concept-stage modular habitat platform designed for repeatable manufacturing, rapid deployment and operation in infrastructure-constrained environments."
+  >
+
+  <title>Box | The World Simpler</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap"
     rel="stylesheet"
   >
 
@@ -18,13 +33,18 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     html,
     body {
       margin: 0;
       padding: 0;
       background: #ffffff;
       color: #000000;
-      font-family: "Inter", sans-serif;
+      font-family: "Inter Display", "Inter", sans-serif;
+      font-optical-sizing: auto;
     }
 
     body {
@@ -38,27 +58,37 @@
       margin: 0 auto;
     }
 
+    h1,
+    h2 {
+      font-family: "Inter Display", "Inter", sans-serif;
+      font-optical-sizing: auto;
+      letter-spacing: -0.035em;
+    }
+
     h1 {
       margin: 0 0 64px;
-      font-size: clamp(2rem, 5vw, 4rem);
-      line-height: 1;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 700;
+      line-height: 0.95;
     }
 
     .carousel-section {
-      margin-bottom: 96px;
+      margin-bottom: 112px;
     }
 
     .carousel-section h2 {
-      margin: 0 0 8px;
-      font-size: 1.35rem;
-      font-weight: 700;
+      margin: 0 0 10px;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 600;
+      line-height: 1.05;
     }
 
     .section-description {
-      max-width: 720px;
-      margin: 0 0 24px;
-      color: #555555;
+      max-width: 820px;
+      margin: 0 0 28px;
+      color: #4a4a4a;
       font-size: 1rem;
+      line-height: 1.65;
     }
 
     .carousel {
@@ -80,7 +110,9 @@
       margin: 0;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 400ms ease;
+      transition:
+        opacity 400ms ease,
+        visibility 400ms ease;
     }
 
     .slide.active {
@@ -114,10 +146,21 @@
       place-items: center;
       transform: translateY(-50%);
       backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition:
+        background 180ms ease,
+        transform 180ms ease;
     }
 
     .carousel-button:hover {
       background: #ffffff;
+      transform: translateY(-50%) scale(1.04);
+    }
+
+    .carousel-button:focus-visible,
+    .carousel-dot:focus-visible {
+      outline: 2px solid #000000;
+      outline-offset: 3px;
     }
 
     .carousel-button.previous {
@@ -132,15 +175,16 @@
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 24px;
-      padding-top: 18px;
+      gap: 32px;
+      padding-top: 20px;
     }
 
     .image-description {
-      max-width: 760px;
+      max-width: 850px;
       margin: 0;
-      color: #333333;
+      color: #303030;
       font-size: 0.95rem;
+      line-height: 1.65;
     }
 
     .carousel-dots {
@@ -148,7 +192,7 @@
       flex-shrink: 0;
       justify-content: center;
       gap: 9px;
-      padding-top: 5px;
+      padding-top: 7px;
     }
 
     .carousel-dot {
@@ -159,6 +203,13 @@
       border-radius: 50%;
       background: #c7c7c7;
       cursor: pointer;
+      transition:
+        background 180ms ease,
+        transform 180ms ease;
+    }
+
+    .carousel-dot:hover {
+      transform: scale(1.2);
     }
 
     .carousel-dot.active {
@@ -175,7 +226,7 @@
       }
 
       .carousel-section {
-        margin-bottom: 64px;
+        margin-bottom: 72px;
       }
 
       .carousel-track {
@@ -197,11 +248,23 @@
 
       .carousel-footer {
         flex-direction: column;
-        gap: 14px;
+        gap: 16px;
       }
 
       .carousel-dots {
         align-self: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .slide,
+      .carousel-button,
+      .carousel-dot {
+        transition: none;
       }
     }
   </style>
@@ -214,42 +277,49 @@
 
   <main>
     <section class="carousel-section">
-      <h2>Exterior</h2>
+      <h2>Exterior platform</h2>
 
       <p class="section-description">
-        A compact, self-contained structure designed for remote landscapes,
-        combining a minimal form with a durable metal exterior.
+        Box is conceived as a prefabricated enclosure platform for remote and
+        infrastructure-constrained sites. Its rectilinear geometry, repeatable
+        panel system and concentrated service architecture are intended to
+        reduce component variation, simplify transportation and move a greater
+        proportion of construction into a controlled manufacturing environment.
       </p>
 
-      <div class="carousel" aria-label="Exterior image gallery">
+      <div
+        class="carousel"
+        aria-label="Exterior platform image gallery"
+        tabindex="0"
+      >
         <div class="carousel-track">
           <figure
             class="slide active"
-            data-description="The box sits beside a glacial lake, surrounded by snow-covered mountains and rocky terrain."
+            data-description="Concept visualization of Box deployed in an alpine environment. The compact building envelope and integrated utility strategy are intended to reduce site preparation, shorten installation time and limit weather exposure during commissioning."
           >
             <img
               src="1.png"
-              alt="The box in a snowy mountain landscape"
+              alt="Box deployed beside a glacial lake in a remote mountain environment"
             >
           </figure>
 
           <figure
             class="slide"
-            data-description="A side view reveals the smooth metal exterior, narrow profile and reflective surface of the structure."
+            data-description="The longitudinal elevation illustrates a low-part-count exterior assembly with large-format metal panels. The proposed envelope is organized for repeatable fabrication, replaceable surface components and simplified inspection across the full structure."
           >
             <img
               src="2.png"
-              alt="Side view of the box beside a glacial lake"
+              alt="Longitudinal exterior view of the metal enclosure"
             >
           </figure>
 
           <figure
             class="slide"
-            data-description="The full-width exterior elevation shows the modular panel system and simple rectangular geometry."
+            data-description="The primary elevation shows the standardized structural bay spacing and modular panel divisions. The overall proportions are intended to support transport planning, repeatable assembly and multiple internal configurations built on a common enclosure platform."
           >
             <img
               src="3.png"
-              alt="Front view of the box in the mountains"
+              alt="Primary exterior elevation showing the modular panel system"
             >
           </figure>
         </div>
@@ -257,7 +327,7 @@
         <button
           class="carousel-button previous"
           type="button"
-          aria-label="Previous image"
+          aria-label="Show previous exterior image"
         >
           &#8249;
         </button>
@@ -265,59 +335,69 @@
         <button
           class="carousel-button next"
           type="button"
-          aria-label="Next image"
+          aria-label="Show next exterior image"
         >
           &#8250;
         </button>
       </div>
 
       <div class="carousel-footer">
-        <p class="image-description"></p>
+        <p
+          class="image-description"
+          aria-live="polite"
+        ></p>
 
         <div
           class="carousel-dots"
-          aria-label="Choose exterior image"
+          aria-label="Choose an exterior image"
         ></div>
       </div>
     </section>
 
     <section class="carousel-section">
-      <h2>Interior</h2>
+      <h2>Occupant module</h2>
 
       <p class="section-description">
-        The interior uses bright surfaces, concealed storage and efficient
-        layouts to create a calm living environment within a compact footprint.
+        The occupied volume is organized around a compact service spine and a
+        small number of repeatable interior assemblies. Concentrating plumbing,
+        ventilation and electrical interfaces into defined zones is intended
+        to reduce installation complexity, preserve usable floor area and
+        support factory-level quality control before deployment.
       </p>
 
-      <div class="carousel" aria-label="Interior image gallery">
+      <div
+        class="carousel"
+        aria-label="Occupant module image gallery"
+        tabindex="0"
+      >
         <div class="carousel-track">
           <figure
             class="slide active"
-            data-description="The bedroom faces the landscape through a large window, with a low bed and uninterrupted white surfaces."
+            data-description="The sleeping zone is positioned on the primary glazed elevation to provide daylight, visual connection to the site and a clear internal circulation path. The low-profile furniture strategy preserves usable wall area for integrated storage and building services."
           >
             <img
               src="4.png"
-              alt="Minimal bedroom inside the box"
+              alt="Sleeping area inside the modular habitat"
             >
           </figure>
 
           <figure
             class="slide"
-            data-description="The bathroom includes a compact sink, shower and concealed sliding door within a clean, minimal layout."
+            data-description="The wet-room core consolidates water supply, drainage, ventilation and waterproofed surfaces into a compact technical zone. Shorter service runs and accessible connection points are intended to simplify factory testing, field installation and future maintenance."
           >
             <img
               src="5.png"
-              alt="Minimal bathroom inside the box"
+              alt="Compact bathroom and wet-room service core"
             >
           </figure>
 
           <figure
             class="slide"
-            data-description="The kitchen provides full-length worktops, integrated appliances and storage on both sides of the room."
+            data-description="The galley kitchen uses parallel work surfaces, integrated appliances and full-height storage to maximize functional capacity within a narrow footprint. Major utility connections are aligned with the central service architecture to minimize distributed plumbing and electrical runs."
           >
             <img
               src="6.png"
-              alt="Minimal kitchen inside the box"
+              alt="Integrated galley kitchen inside the modular habitat"
             >
           </figure>
         </div>
@@ -325,7 +405,7 @@
         <button
           class="carousel-button previous"
           type="button"
-          aria-label="Previous image"
+          aria-label="Show previous interior image"
         >
           &#8249;
         </button>
@@ -333,59 +413,70 @@
         <button
           class="carousel-button next"
           type="button"
-          aria-label="Next image"
+          aria-label="Show next interior image"
         >
           &#8250;
         </button>
       </div>
 
       <div class="carousel-footer">
-        <p class="image-description"></p>
+        <p
+          class="image-description"
+          aria-live="polite"
+        ></p>
 
         <div
           class="carousel-dots"
-          aria-label="Choose interior image"
+          aria-label="Choose an interior image"
         ></div>
       </div>
     </section>
 
     <section class="carousel-section">
-      <h2>Systems</h2>
+      <h2>Integrated utility systems</h2>
 
       <p class="section-description">
-        The building systems are organized inside a service module containing
-        ventilation, plumbing, water treatment, electrical and climate-control equipment.
+        The proposed utility module centralizes water handling, thermal
+        management, ventilation, electrical distribution, sensing and control
+        equipment inside a serviceable enclosure. The architecture is intended
+        to support pre-assembly, structured commissioning, remote diagnostics
+        and subsystem replacement without extensive intervention inside the
+        occupied space.
       </p>
 
-      <div class="carousel" aria-label="Mechanical systems image gallery">
+      <div
+        class="carousel"
+        aria-label="Integrated utility systems image gallery"
+        tabindex="0"
+      >
         <div class="carousel-track">
           <figure
             class="slide active"
-            data-description="The complete service module combines pipes, tanks, controls and ventilation equipment inside one metal enclosure."
+            data-description="System-level view of the proposed utility module, combining hydraulic circuits, storage vessels, control enclosures and air-handling equipment within a defined mechanical package. Standardized interfaces are intended to allow the module to be tested before integration with the occupied enclosure."
           >
             <img
               src="7.png"
-              alt="Complete mechanical system inside the box"
+              alt="Complete integrated utility module"
             >
           </figure>
 
           <figure
             class="slide"
-            data-description="A detailed view of the plumbing network shows tanks, valves, gauges and distribution pipes."
+            data-description="Detailed hydraulic zone showing distribution manifolds, isolation valves, pressure-control components, instrumentation and service connections. Centralized routing is intended to improve inspection access, support fault isolation and reduce the need to open finished interior surfaces."
           >
             <img
               src="8.png"
-              alt="Close-up of pipes and mechanical equipment"
+              alt="Hydraulic distribution and water-management components"
             >
           </figure>
 
           <figure
             class="slide"
-            data-description="The ventilation section contains ductwork, filtration equipment and enclosed electrical controls."
+            data-description="Air-handling and electrical-control zone showing enclosed distribution cabinets, organized conduit runs and ducted thermal-management components. Separating control equipment from primary wet-service assemblies is intended to improve maintainability and reduce cross-system exposure."
           >
             <img
               src="9.png"
-              alt="Close-up of ventilation and electrical equipment"
+              alt="Air-handling and electrical-control equipment"
             >
           </figure>
         </div>
@@ -393,7 +484,7 @@
         <button
           class="carousel-button previous"
           type="button"
-          aria-label="Previous image"
+          aria-label="Show previous systems image"
         >
           &#8249;
         </button>
@@ -401,18 +492,21 @@
         <button
           class="carousel-button next"
           type="button"
-          aria-label="Next image"
+          aria-label="Show next systems image"
         >
           &#8250;
         </button>
       </div>
 
       <div class="carousel-footer">
-        <p class="image-description"></p>
+        <p
+          class="image-description"
+          aria-live="polite"
+        ></p>
 
         <div
           class="carousel-dots"
-          aria-label="Choose systems image"
+          aria-label="Choose a systems image"
         ></div>
       </div>
     </section>
@@ -460,7 +554,10 @@
           const isActive = dotIndex === currentIndex;
 
           dot.classList.toggle("active", isActive);
-          dot.setAttribute("aria-current", isActive ? "true" : "false");
+          dot.setAttribute(
+            "aria-current",
+            isActive ? "true" : "false"
+          );
         });
 
         description.textContent =
@@ -473,6 +570,18 @@
 
       nextButton.addEventListener("click", () => {
         showSlide(currentIndex + 1);
+      });
+
+      carousel.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          showSlide(currentIndex - 1);
+        }
+
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          showSlide(currentIndex + 1);
+        }
       });
 
       carousel.addEventListener(
