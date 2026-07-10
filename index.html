@@ -32,11 +32,16 @@
     :root {
       --black: #000000;
       --white: #ffffff;
+
       --gray-100: #f2f2f2;
       --gray-200: #dedede;
       --gray-400: #999999;
       --gray-600: #555555;
       --gray-800: #262626;
+
+      --accent: #0071e3;
+      --accent-hover: #0077ed;
+      --accent-light: #e8f2ff;
     }
 
     * {
@@ -73,6 +78,11 @@
       font-family: inherit;
     }
 
+    ::selection {
+      background: var(--accent);
+      color: var(--white);
+    }
+
     .project-header {
       margin-bottom: 112px;
     }
@@ -84,7 +94,8 @@
       gap: 24px;
       margin-bottom: 24px;
       padding-bottom: 12px;
-      border-bottom: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--accent);
+      color: var(--accent);
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.12em;
@@ -120,14 +131,14 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       margin-top: 64px;
-      border-top: 1px solid var(--black);
-      border-bottom: 1px solid var(--black);
+      border-top: 1px solid var(--accent);
+      border-bottom: 1px solid var(--accent);
     }
 
     .stat {
       min-height: 150px;
       padding: 22px 24px;
-      border-right: 1px solid var(--black);
+      border-right: 1px solid var(--accent);
     }
 
     .stat:last-child {
@@ -146,6 +157,7 @@
     .stat-value {
       display: block;
       margin-bottom: 4px;
+      color: var(--accent);
       font-size: clamp(2.5rem, 6vw, 4.5rem);
       font-weight: 600;
       letter-spacing: -0.06em;
@@ -156,8 +168,8 @@
       display: block;
       color: var(--gray-600);
       font-size: 0.82rem;
-      text-transform: uppercase;
       letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .carousel-section {
@@ -170,10 +182,11 @@
       gap: 32px;
       margin-bottom: 32px;
       padding-top: 22px;
-      border-top: 1px solid var(--black);
+      border-top: 1px solid var(--accent);
     }
 
     .section-number {
+      color: var(--accent);
       font-size: clamp(2rem, 4vw, 3.5rem);
       font-weight: 600;
       letter-spacing: -0.06em;
@@ -189,7 +202,7 @@
       flex-wrap: wrap;
       gap: 8px 18px;
       margin-bottom: 12px;
-      color: var(--gray-600);
+      color: var(--accent);
       font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.1em;
@@ -235,7 +248,7 @@
     .priority-number {
       display: block;
       margin-bottom: 12px;
-      color: var(--gray-400);
+      color: var(--accent);
       font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.1em;
@@ -245,8 +258,8 @@
       display: block;
       font-size: 0.84rem;
       font-weight: 600;
-      text-transform: uppercase;
       letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .carousel {
@@ -258,7 +271,7 @@
     }
 
     .carousel:focus-visible {
-      outline: 2px solid var(--black);
+      outline: 2px solid var(--accent);
       outline-offset: 4px;
     }
 
@@ -298,8 +311,8 @@
       left: 20px;
       z-index: 2;
       padding: 8px 11px;
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--black);
+      background: var(--accent);
+      color: var(--white);
       font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.1em;
@@ -314,7 +327,7 @@
       z-index: 2;
       min-width: 72px;
       padding: 8px 11px;
-      background: rgba(0, 0, 0, 0.78);
+      background: var(--accent);
       color: var(--white);
       font-size: 0.7rem;
       font-weight: 600;
@@ -344,17 +357,19 @@
       -webkit-backdrop-filter: blur(8px);
       transition:
         background 180ms ease,
+        color 180ms ease,
         transform 180ms ease;
     }
 
     .carousel-button:hover {
-      background: var(--white);
+      background: var(--accent-hover);
+      color: var(--white);
       transform: translateY(-50%) scale(1.05);
     }
 
     .carousel-button:focus-visible,
     .carousel-dot:focus-visible {
-      outline: 2px solid var(--black);
+      outline: 2px solid var(--accent);
       outline-offset: 3px;
     }
 
@@ -375,7 +390,7 @@
     }
 
     .caption-number {
-      color: var(--gray-400);
+      color: var(--accent);
       font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.1em;
@@ -424,13 +439,13 @@
     }
 
     .carousel-dot:hover {
-      border-color: var(--black);
-      color: var(--black);
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     .carousel-dot.active {
-      border-color: var(--black);
-      background: var(--black);
+      border-color: var(--accent);
+      background: var(--accent);
       color: var(--white);
     }
 
@@ -440,10 +455,11 @@
       gap: 32px;
       margin-top: 30px;
       padding: 24px 0 60px;
-      border-top: 1px solid var(--black);
+      border-top: 1px solid var(--accent);
     }
 
     .footer-number {
+      color: var(--accent);
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.1em;
@@ -483,7 +499,7 @@
       .stat {
         min-height: 0;
         border-right: 0;
-        border-bottom: 1px solid var(--black);
+        border-bottom: 1px solid var(--accent);
       }
 
       .stat:last-child {
