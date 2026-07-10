@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Box</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Box | The World Simpler</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     * {
@@ -18,9 +22,9 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #ffffff;
+      background: #ffffff;
       color: #000000;
-      font-family: 'Inter Display', sans-serif;
+      font-family: "Inter", sans-serif;
     }
 
     body {
@@ -28,15 +32,311 @@
       line-height: 1.4;
     }
 
+    header,
+    main {
+      width: min(1200px, 100%);
+      margin: 0 auto;
+    }
+
     h1 {
-      font-size: 2rem;
-      font-weight: 700;
+      margin: 0 0 64px;
+      font-size: clamp(2rem, 5vw, 4rem);
       line-height: 1;
+    }
+
+    .carousel-section {
+      margin-bottom: 80px;
+    }
+
+    .carousel-section h2 {
+      margin: 0 0 18px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: #f2f2f2;
+    }
+
+    .carousel-track {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
       margin: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 400ms ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      display: grid;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.88);
+      color: #000000;
+      font: inherit;
+      font-size: 26px;
+      cursor: pointer;
+      place-items: center;
+      transform: translateY(-50%);
+      backdrop-filter: blur(8px);
+    }
+
+    .carousel-button:hover {
+      background: #ffffff;
+    }
+
+    .carousel-button.previous {
+      left: 18px;
+    }
+
+    .carousel-button.next {
+      right: 18px;
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+      padding-top: 16px;
+    }
+
+    .carousel-dot {
+      width: 9px;
+      height: 9px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: #c7c7c7;
+      cursor: pointer;
+    }
+
+    .carousel-dot.active {
+      background: #000000;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 24px 16px;
+      }
+
+      h1 {
+        margin-bottom: 48px;
+      }
+
+      .carousel-section {
+        margin-bottom: 56px;
+      }
+
+      .carousel-button {
+        width: 40px;
+        height: 40px;
+      }
+
+      .carousel-button.previous {
+        left: 10px;
+      }
+
+      .carousel-button.next {
+        right: 10px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <h1>Box</h1>
+  <header>
+    <h1>The World Simpler</h1>
+  </header>
+
+  <main>
+    <!-- Carousel 1: images 1–3 -->
+    <section class="carousel-section">
+      <h2>Exterior</h2>
+
+      <div class="carousel" aria-label="Exterior image gallery">
+        <div class="carousel-track">
+          <figure class="slide active">
+            <img src="1.png" alt="The box in a snowy mountain landscape">
+          </figure>
+
+          <figure class="slide">
+            <img src="2.png" alt="Side view of the box beside a glacial lake">
+          </figure>
+
+          <figure class="slide">
+            <img src="3.png" alt="Front view of the box in the mountains">
+          </figure>
+        </div>
+
+        <button class="carousel-button previous" type="button" aria-label="Previous image">
+          &#8249;
+        </button>
+
+        <button class="carousel-button next" type="button" aria-label="Next image">
+          &#8250;
+        </button>
+      </div>
+
+      <div class="carousel-dots" aria-label="Choose exterior image"></div>
+    </section>
+
+    <!-- Carousel 2: images 4–6 -->
+    <section class="carousel-section">
+      <h2>Interior</h2>
+
+      <div class="carousel" aria-label="Interior image gallery">
+        <div class="carousel-track">
+          <figure class="slide active">
+            <img src="4.png" alt="Minimal bedroom inside the box">
+          </figure>
+
+          <figure class="slide">
+            <img src="5.png" alt="Minimal bathroom inside the box">
+          </figure>
+
+          <figure class="slide">
+            <img src="6.png" alt="Minimal kitchen inside the box">
+          </figure>
+        </div>
+
+        <button class="carousel-button previous" type="button" aria-label="Previous image">
+          &#8249;
+        </button>
+
+        <button class="carousel-button next" type="button" aria-label="Next image">
+          &#8250;
+        </button>
+      </div>
+
+      <div class="carousel-dots" aria-label="Choose interior image"></div>
+    </section>
+
+    <!-- Carousel 3: images 7–9 -->
+    <section class="carousel-section">
+      <h2>Systems</h2>
+
+      <div class="carousel" aria-label="Mechanical systems image gallery">
+        <div class="carousel-track">
+          <figure class="slide active">
+            <img src="7.png" alt="Complete mechanical system inside the box">
+          </figure>
+
+          <figure class="slide">
+            <img src="8.png" alt="Close-up of pipes and mechanical equipment">
+          </figure>
+
+          <figure class="slide">
+            <img src="9.png" alt="Close-up of ventilation and electrical equipment">
+          </figure>
+        </div>
+
+        <button class="carousel-button previous" type="button" aria-label="Previous image">
+          &#8249;
+        </button>
+
+        <button class="carousel-button next" type="button" aria-label="Next image">
+          &#8250;
+        </button>
+      </div>
+
+      <div class="carousel-dots" aria-label="Choose systems image"></div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll(".carousel-section").forEach((section) => {
+      const carousel = section.querySelector(".carousel");
+      const slides = [...section.querySelectorAll(".slide")];
+      const previousButton = section.querySelector(".previous");
+      const nextButton = section.querySelector(".next");
+      const dotsContainer = section.querySelector(".carousel-dots");
+
+      let currentIndex = 0;
+      let touchStartX = 0;
+
+      const dots = slides.map((slide, index) => {
+        const dot = document.createElement("button");
+
+        dot.type = "button";
+        dot.className = "carousel-dot";
+        dot.setAttribute("aria-label", `Show image ${index + 1}`);
+
+        dot.addEventListener("click", () => {
+          showSlide(index);
+        });
+
+        dotsContainer.appendChild(dot);
+        return dot;
+      });
+
+      function showSlide(index) {
+        currentIndex = (index + slides.length) % slides.length;
+
+        slides.forEach((slide, slideIndex) => {
+          slide.classList.toggle("active", slideIndex === currentIndex);
+        });
+
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle("active", dotIndex === currentIndex);
+        });
+      }
+
+      previousButton.addEventListener("click", () => {
+        showSlide(currentIndex - 1);
+      });
+
+      nextButton.addEventListener("click", () => {
+        showSlide(currentIndex + 1);
+      });
+
+      carousel.addEventListener("touchstart", (event) => {
+        touchStartX = event.changedTouches[0].clientX;
+      }, { passive: true });
+
+      carousel.addEventListener("touchend", (event) => {
+        const touchEndX = event.changedTouches[0].clientX;
+        const distance = touchEndX - touchStartX;
+
+        if (Math.abs(distance) < 50) {
+          return;
+        }
+
+        if (distance > 0) {
+          showSlide(currentIndex - 1);
+        } else {
+          showSlide(currentIndex + 1);
+        }
+      }, { passive: true });
+
+      showSlide(0);
+    });
+  </script>
 </body>
 </html>
