@@ -29,6 +29,16 @@
   >
 
   <style>
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f2f2f2;
+      --gray-200: #dedede;
+      --gray-400: #999999;
+      --gray-600: #555555;
+      --gray-800: #262626;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -41,8 +51,8 @@
     body {
       margin: 0;
       padding: 0;
-      background: #ffffff;
-      color: #000000;
+      background: var(--white);
+      color: var(--black);
       font-family: "Inter Display", "Inter", sans-serif;
       font-optical-sizing: auto;
     }
@@ -53,49 +63,203 @@
     }
 
     header,
-    main {
+    main,
+    footer {
       width: min(1200px, 100%);
       margin: 0 auto;
     }
 
-    h1,
-    h2 {
-      font-family: "Inter Display", "Inter", sans-serif;
-      font-optical-sizing: auto;
-      letter-spacing: -0.035em;
+    button {
+      font-family: inherit;
     }
 
-    h1 {
-      margin: 0 0 64px;
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      font-weight: 700;
-      line-height: 0.95;
-    }
-
-    .carousel-section {
+    .project-header {
       margin-bottom: 112px;
     }
 
-    .carousel-section h2 {
-      margin: 0 0 10px;
-      font-size: clamp(1.5rem, 3vw, 2.25rem);
+    .header-index {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray-200);
+      font-size: 0.72rem;
       font-weight: 600;
-      line-height: 1.05;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 0;
+      font-family: "Inter Display", "Inter", sans-serif;
+      font-optical-sizing: auto;
+      letter-spacing: -0.04em;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin-bottom: 32px;
+      font-size: clamp(4rem, 12vw, 9rem);
+      font-weight: 700;
+      line-height: 0.82;
+    }
+
+    .project-intro {
+      max-width: 800px;
+      margin: 0;
+      color: var(--gray-600);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.65;
+    }
+
+    .project-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 64px;
+      border-top: 1px solid var(--black);
+      border-bottom: 1px solid var(--black);
+    }
+
+    .stat {
+      min-height: 150px;
+      padding: 22px 24px;
+      border-right: 1px solid var(--black);
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat-index {
+      display: block;
+      margin-bottom: 30px;
+      color: var(--gray-600);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+    }
+
+    .stat-value {
+      display: block;
+      margin-bottom: 4px;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 600;
+      letter-spacing: -0.06em;
+      line-height: 0.9;
+    }
+
+    .stat-label {
+      display: block;
+      color: var(--gray-600);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .carousel-section {
+      margin-bottom: 140px;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 100px minmax(0, 1fr);
+      gap: 32px;
+      margin-bottom: 32px;
+      padding-top: 22px;
+      border-top: 1px solid var(--black);
+    }
+
+    .section-number {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.06em;
+      line-height: 1;
+    }
+
+    .section-copy {
+      max-width: 850px;
+    }
+
+    .section-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      margin-bottom: 12px;
+      color: var(--gray-600);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .section-copy h2 {
+      margin-bottom: 14px;
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 600;
+      line-height: 0.95;
     }
 
     .section-description {
       max-width: 820px;
-      margin: 0 0 28px;
-      color: #4a4a4a;
+      margin: 0;
+      color: var(--gray-600);
       font-size: 1rem;
-      line-height: 1.65;
+      line-height: 1.7;
+    }
+
+    .numbered-priorities {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin: 28px 0 32px;
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .priority {
+      padding: 18px 18px 18px 0;
+      border-right: 1px solid var(--gray-200);
+    }
+
+    .priority:not(:first-child) {
+      padding-left: 18px;
+    }
+
+    .priority:last-child {
+      border-right: 0;
+    }
+
+    .priority-number {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--gray-400);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+    }
+
+    .priority-name {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
 
     .carousel {
       position: relative;
       width: 100%;
       overflow: hidden;
-      background: #f2f2f2;
+      background: var(--gray-100);
+      outline: none;
+    }
+
+    .carousel:focus-visible {
+      outline: 2px solid var(--black);
+      outline-offset: 4px;
     }
 
     .carousel-track {
@@ -128,19 +292,50 @@
       object-position: center;
     }
 
+    .image-number {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 2;
+      padding: 8px 11px;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--black);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .carousel-position {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 2;
+      min-width: 72px;
+      padding: 8px 11px;
+      background: rgba(0, 0, 0, 0.78);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
     .carousel-button {
       position: absolute;
       top: 50%;
-      z-index: 2;
+      z-index: 3;
       display: grid;
       width: 48px;
       height: 48px;
       padding: 0;
       border: 0;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.88);
-      color: #000000;
-      font: inherit;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--black);
       font-size: 26px;
       cursor: pointer;
       place-items: center;
@@ -153,13 +348,13 @@
     }
 
     .carousel-button:hover {
-      background: #ffffff;
-      transform: translateY(-50%) scale(1.04);
+      background: var(--white);
+      transform: translateY(-50%) scale(1.05);
     }
 
     .carousel-button:focus-visible,
     .carousel-dot:focus-visible {
-      outline: 2px solid #000000;
+      outline: 2px solid var(--black);
       outline-offset: 3px;
     }
 
@@ -172,18 +367,32 @@
     }
 
     .carousel-footer {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 32px;
-      padding-top: 20px;
+      display: grid;
+      grid-template-columns: 100px minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: start;
+      padding-top: 22px;
+    }
+
+    .caption-number {
+      color: var(--gray-400);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+    }
+
+    .caption-title {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
     }
 
     .image-description {
-      max-width: 850px;
+      max-width: 820px;
       margin: 0;
-      color: #303030;
-      font-size: 0.95rem;
+      color: var(--gray-600);
+      font-size: 0.94rem;
       line-height: 1.65;
     }
 
@@ -196,37 +405,113 @@
     }
 
     .carousel-dot {
-      width: 9px;
-      height: 9px;
+      display: grid;
+      width: 28px;
+      height: 28px;
       padding: 0;
-      border: 0;
+      border: 1px solid var(--gray-200);
       border-radius: 50%;
-      background: #c7c7c7;
+      background: transparent;
+      color: var(--gray-600);
+      font-size: 0.64rem;
+      font-weight: 600;
       cursor: pointer;
+      place-items: center;
       transition:
         background 180ms ease,
-        transform 180ms ease;
+        color 180ms ease,
+        border-color 180ms ease;
     }
 
     .carousel-dot:hover {
-      transform: scale(1.2);
+      border-color: var(--black);
+      color: var(--black);
     }
 
     .carousel-dot.active {
-      background: #000000;
+      border-color: var(--black);
+      background: var(--black);
+      color: var(--white);
     }
 
-    @media (max-width: 700px) {
+    .project-footer {
+      display: grid;
+      grid-template-columns: 100px minmax(0, 1fr);
+      gap: 32px;
+      margin-top: 30px;
+      padding: 24px 0 60px;
+      border-top: 1px solid var(--black);
+    }
+
+    .footer-number {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-copy {
+      max-width: 760px;
+      margin: 0;
+      color: var(--gray-600);
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 800px) {
       body {
         padding: 24px 16px;
       }
 
+      .project-header {
+        margin-bottom: 80px;
+      }
+
+      .header-index {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+      }
+
       h1 {
-        margin-bottom: 48px;
+        margin-bottom: 24px;
+      }
+
+      .project-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        min-height: 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--black);
+      }
+
+      .stat:last-child {
+        border-bottom: 0;
+      }
+
+      .section-heading {
+        grid-template-columns: 1fr;
+        gap: 18px;
       }
 
       .carousel-section {
-        margin-bottom: 72px;
+        margin-bottom: 88px;
+      }
+
+      .numbered-priorities {
+        grid-template-columns: 1fr;
+      }
+
+      .priority,
+      .priority:not(:first-child) {
+        padding: 16px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .priority:last-child {
+        border-bottom: 0;
       }
 
       .carousel-track {
@@ -246,13 +531,29 @@
         right: 10px;
       }
 
+      .image-number {
+        top: 12px;
+        left: 12px;
+      }
+
+      .carousel-position {
+        top: 12px;
+        right: 12px;
+      }
+
       .carousel-footer {
-        flex-direction: column;
-        gap: 16px;
+        grid-template-columns: 1fr;
+        gap: 10px;
       }
 
       .carousel-dots {
-        align-self: center;
+        justify-content: flex-start;
+        margin-top: 8px;
+      }
+
+      .project-footer {
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
     }
 
@@ -271,21 +572,82 @@
 </head>
 
 <body>
-  <header>
+  <header class="project-header">
+    <div class="header-index">
+      <span>01 / 01 — Product platform</span>
+      <span>Concept stage — 2026</span>
+    </div>
+
     <h1>Box</h1>
+
+    <p class="project-intro">
+      One modular habitat platform organized around three coordinated layers:
+      a repeatable exterior enclosure, an efficient occupant module and a
+      centralized utility system.
+    </p>
+
+    <div class="project-stats">
+      <div class="stat">
+        <span class="stat-index">01 / Platform</span>
+        <span class="stat-value">01</span>
+        <span class="stat-label">Integrated product concept</span>
+      </div>
+
+      <div class="stat">
+        <span class="stat-index">02 / Galleries</span>
+        <span class="stat-value">03</span>
+        <span class="stat-label">Technical design categories</span>
+      </div>
+
+      <div class="stat">
+        <span class="stat-index">03 / Visuals</span>
+        <span class="stat-value">09</span>
+        <span class="stat-label">Concept-stage project views</span>
+      </div>
+    </div>
   </header>
 
   <main>
     <section class="carousel-section">
-      <h2>Exterior platform</h2>
+      <div class="section-heading">
+        <div class="section-number">01</div>
 
-      <p class="section-description">
-        Box is conceived as a prefabricated enclosure platform for remote and
-        infrastructure-constrained sites. Its rectilinear geometry, repeatable
-        panel system and concentrated service architecture are intended to
-        reduce component variation, simplify transportation and move a greater
-        proportion of construction into a controlled manufacturing environment.
-      </p>
+        <div class="section-copy">
+          <div class="section-meta">
+            <span>01 / 03</span>
+            <span>03 exterior views</span>
+            <span>Layer 01</span>
+          </div>
+
+          <h2>Exterior platform</h2>
+
+          <p class="section-description">
+            Box is conceived as a prefabricated enclosure platform for remote
+            and infrastructure-constrained sites. Its rectilinear geometry,
+            repeatable panel system and concentrated service architecture are
+            intended to reduce component variation, simplify transportation
+            and move a greater proportion of construction into a controlled
+            manufacturing environment.
+          </p>
+
+          <div class="numbered-priorities">
+            <div class="priority">
+              <span class="priority-number">01.1</span>
+              <span class="priority-name">Repeatable enclosure</span>
+            </div>
+
+            <div class="priority">
+              <span class="priority-number">01.2</span>
+              <span class="priority-name">Transport planning</span>
+            </div>
+
+            <div class="priority">
+              <span class="priority-number">01.3</span>
+              <span class="priority-name">Rapid deployment</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div
         class="carousel"
@@ -295,8 +657,12 @@
         <div class="carousel-track">
           <figure
             class="slide active"
+            data-number="01.1"
+            data-title="Remote deployment configuration"
             data-description="Concept visualization of Box deployed in an alpine environment. The compact building envelope and integrated utility strategy are intended to reduce site preparation, shorten installation time and limit weather exposure during commissioning."
           >
+            <span class="image-number">01.1</span>
+
             <img
               src="1.png"
               alt="Box deployed beside a glacial lake in a remote mountain environment"
@@ -305,8 +671,12 @@
 
           <figure
             class="slide"
+            data-number="01.2"
+            data-title="Longitudinal enclosure elevation"
             data-description="The longitudinal elevation illustrates a low-part-count exterior assembly with large-format metal panels. The proposed envelope is organized for repeatable fabrication, replaceable surface components and simplified inspection across the full structure."
           >
+            <span class="image-number">01.2</span>
+
             <img
               src="2.png"
               alt="Longitudinal exterior view of the metal enclosure"
@@ -315,13 +685,24 @@
 
           <figure
             class="slide"
-            data-description="The primary elevation shows the standardized structural bay spacing and modular panel divisions. The overall proportions are intended to support transport planning, repeatable assembly and multiple internal configurations built on a common enclosure platform."
+            data-number="01.3"
+            data-title="Standardized structural bay system"
+            data-description="The primary elevation shows standardized structural bay spacing and modular panel divisions. The proportions are intended to support transport planning, repeatable assembly and multiple internal configurations built on one enclosure platform."
           >
+            <span class="image-number">01.3</span>
+
             <img
               src="3.png"
               alt="Primary exterior elevation showing the modular panel system"
             >
           </figure>
+        </div>
+
+        <div
+          class="carousel-position"
+          aria-live="polite"
+        >
+          01 / 03
         </div>
 
         <button
@@ -342,10 +723,16 @@
       </div>
 
       <div class="carousel-footer">
-        <p
-          class="image-description"
-          aria-live="polite"
-        ></p>
+        <div class="caption-number">01.1</div>
+
+        <div>
+          <h3 class="caption-title"></h3>
+
+          <p
+            class="image-description"
+            aria-live="polite"
+          ></p>
+        </div>
 
         <div
           class="carousel-dots"
@@ -355,15 +742,44 @@
     </section>
 
     <section class="carousel-section">
-      <h2>Occupant module</h2>
+      <div class="section-heading">
+        <div class="section-number">02</div>
 
-      <p class="section-description">
-        The occupied volume is organized around a compact service spine and a
-        small number of repeatable interior assemblies. Concentrating plumbing,
-        ventilation and electrical interfaces into defined zones is intended
-        to reduce installation complexity, preserve usable floor area and
-        support factory-level quality control before deployment.
-      </p>
+        <div class="section-copy">
+          <div class="section-meta">
+            <span>02 / 03</span>
+            <span>03 interior views</span>
+            <span>Layer 02</span>
+          </div>
+
+          <h2>Occupant module</h2>
+
+          <p class="section-description">
+            The occupied volume is organized around a compact service spine and
+            a small number of repeatable interior assemblies. Concentrating
+            plumbing, ventilation and electrical interfaces into defined zones
+            is intended to reduce installation complexity, preserve usable
+            floor area and support factory-level quality control.
+          </p>
+
+          <div class="numbered-priorities">
+            <div class="priority">
+              <span class="priority-number">02.1</span>
+              <span class="priority-name">Sleeping zone</span>
+            </div>
+
+            <div class="priority">
+              <span class="priority-number">02.2</span>
+              <span class="priority-name">Wet-room core</span>
+            </div>
+
+            <div class="priority">
+              <span class="priority-number">02.3</span>
+              <span class="priority-name">Integrated galley</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div
         class="carousel"
@@ -373,8 +789,12 @@
         <div class="carousel-track">
           <figure
             class="slide active"
+            data-number="02.1"
+            data-title="Primary sleeping zone"
             data-description="The sleeping zone is positioned on the primary glazed elevation to provide daylight, visual connection to the site and a clear internal circulation path. The low-profile furniture strategy preserves usable wall area for integrated storage and building services."
           >
+            <span class="image-number">02.1</span>
+
             <img
               src="4.png"
               alt="Sleeping area inside the modular habitat"
@@ -383,8 +803,12 @@
 
           <figure
             class="slide"
-            data-description="The wet-room core consolidates water supply, drainage, ventilation and waterproofed surfaces into a compact technical zone. Shorter service runs and accessible connection points are intended to simplify factory testing, field installation and future maintenance."
+            data-number="02.2"
+            data-title="Consolidated wet-room core"
+            data-description="The wet-room core consolidates water supply, drainage, ventilation and waterproofed surfaces into one compact technical zone. Shorter service runs and accessible connection points are intended to simplify factory testing, field installation and future maintenance."
           >
+            <span class="image-number">02.2</span>
+
             <img
               src="5.png"
               alt="Compact bathroom and wet-room service core"
@@ -393,13 +817,24 @@
 
           <figure
             class="slide"
-            data-description="The galley kitchen uses parallel work surfaces, integrated appliances and full-height storage to maximize functional capacity within a narrow footprint. Major utility connections are aligned with the central service architecture to minimize distributed plumbing and electrical runs."
+            data-number="02.3"
+            data-title="Integrated galley system"
+            data-description="The galley kitchen uses parallel work surfaces, integrated appliances and full-height storage to maximize functional capacity within a narrow footprint. Major utility connections align with the central service architecture to minimize distributed plumbing and electrical runs."
           >
+            <span class="image-number">02.3</span>
+
             <img
               src="6.png"
               alt="Integrated galley kitchen inside the modular habitat"
             >
           </figure>
+        </div>
+
+        <div
+          class="carousel-position"
+          aria-live="polite"
+        >
+          01 / 03
         </div>
 
         <button
@@ -420,10 +855,16 @@
       </div>
 
       <div class="carousel-footer">
-        <p
-          class="image-description"
-          aria-live="polite"
-        ></p>
+        <div class="caption-number">02.1</div>
+
+        <div>
+          <h3 class="caption-title"></h3>
+
+          <p
+            class="image-description"
+            aria-live="polite"
+          ></p>
+        </div>
 
         <div
           class="carousel-dots"
@@ -433,16 +874,44 @@
     </section>
 
     <section class="carousel-section">
-      <h2>Integrated utility systems</h2>
+      <div class="section-heading">
+        <div class="section-number">03</div>
 
-      <p class="section-description">
-        The proposed utility module centralizes water handling, thermal
-        management, ventilation, electrical distribution, sensing and control
-        equipment inside a serviceable enclosure. The architecture is intended
-        to support pre-assembly, structured commissioning, remote diagnostics
-        and subsystem replacement without extensive intervention inside the
-        occupied space.
-      </p>
+        <div class="section-copy">
+          <div class="section-meta">
+            <span>03 / 03</span>
+            <span>03 systems views</span>
+            <span>Layer 03</span>
+          </div>
+
+          <h2>Integrated utility systems</h2>
+
+          <p class="section-description">
+            The proposed utility module centralizes water handling, thermal
+            management, ventilation, electrical distribution, sensing and
+            control equipment inside a serviceable enclosure. The architecture
+            is intended to support pre-assembly, structured commissioning,
+            remote diagnostics and subsystem replacement.
+          </p>
+
+          <div class="numbered-priorities">
+            <div class="priority">
+              <span class="priority-number">03.1</span>
+              <span class="priority-name">Utility module</span>
+            </div>
+
+            <div class="priority">
+              <span class="priority-number">03.2</span>
+              <span class="priority-name">Hydraulic network</span>
+            </div>
+
+            <div class="priority">
+              <span class="priority-number">03.3</span>
+              <span class="priority-name">Air and controls</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div
         class="carousel"
@@ -452,8 +921,12 @@
         <div class="carousel-track">
           <figure
             class="slide active"
-            data-description="System-level view of the proposed utility module, combining hydraulic circuits, storage vessels, control enclosures and air-handling equipment within a defined mechanical package. Standardized interfaces are intended to allow the module to be tested before integration with the occupied enclosure."
+            data-number="03.1"
+            data-title="Integrated utility module"
+            data-description="System-level view of the proposed utility module, combining hydraulic circuits, storage vessels, control enclosures and air-handling equipment within a defined mechanical package. Standardized interfaces are intended to allow testing before integration with the occupied enclosure."
           >
+            <span class="image-number">03.1</span>
+
             <img
               src="7.png"
               alt="Complete integrated utility module"
@@ -462,8 +935,12 @@
 
           <figure
             class="slide"
-            data-description="Detailed hydraulic zone showing distribution manifolds, isolation valves, pressure-control components, instrumentation and service connections. Centralized routing is intended to improve inspection access, support fault isolation and reduce the need to open finished interior surfaces."
+            data-number="03.2"
+            data-title="Hydraulic distribution network"
+            data-description="Detailed hydraulic zone showing distribution manifolds, isolation valves, pressure-control components, instrumentation and service connections. Centralized routing is intended to improve inspection access, support fault isolation and reduce intervention inside finished spaces."
           >
+            <span class="image-number">03.2</span>
+
             <img
               src="8.png"
               alt="Hydraulic distribution and water-management components"
@@ -472,13 +949,24 @@
 
           <figure
             class="slide"
+            data-number="03.3"
+            data-title="Air-handling and control zone"
             data-description="Air-handling and electrical-control zone showing enclosed distribution cabinets, organized conduit runs and ducted thermal-management components. Separating control equipment from primary wet-service assemblies is intended to improve maintainability and reduce cross-system exposure."
           >
+            <span class="image-number">03.3</span>
+
             <img
               src="9.png"
               alt="Air-handling and electrical-control equipment"
             >
           </figure>
+        </div>
+
+        <div
+          class="carousel-position"
+          aria-live="polite"
+        >
+          01 / 03
         </div>
 
         <button
@@ -499,10 +987,16 @@
       </div>
 
       <div class="carousel-footer">
-        <p
-          class="image-description"
-          aria-live="polite"
-        ></p>
+        <div class="caption-number">03.1</div>
+
+        <div>
+          <h3 class="caption-title"></h3>
+
+          <p
+            class="image-description"
+            aria-live="polite"
+          ></p>
+        </div>
 
         <div
           class="carousel-dots"
@@ -512,6 +1006,17 @@
     </section>
   </main>
 
+  <footer class="project-footer">
+    <div class="footer-number">09 / 09</div>
+
+    <p class="footer-copy">
+      All images and system descriptions represent a concept-stage product
+      direction. Manufacturing specifications, engineering performance,
+      certification requirements, deployment schedules and commercial metrics
+      remain subject to validation and development.
+    </p>
+  </footer>
+
   <script>
     document.querySelectorAll(".carousel-section").forEach((section) => {
       const carousel = section.querySelector(".carousel");
@@ -520,16 +1025,28 @@
       const nextButton = section.querySelector(".next");
       const dotsContainer = section.querySelector(".carousel-dots");
       const description = section.querySelector(".image-description");
+      const captionTitle = section.querySelector(".caption-title");
+      const captionNumber = section.querySelector(".caption-number");
+      const position = section.querySelector(".carousel-position");
 
       let currentIndex = 0;
       let touchStartX = 0;
+
+      const formatNumber = (number) => {
+        return String(number).padStart(2, "0");
+      };
 
       const dots = slides.map((slide, index) => {
         const dot = document.createElement("button");
 
         dot.type = "button";
         dot.className = "carousel-dot";
-        dot.setAttribute("aria-label", `Show image ${index + 1}`);
+        dot.textContent = formatNumber(index + 1);
+
+        dot.setAttribute(
+          "aria-label",
+          `Show image ${index + 1} of ${slides.length}`
+        );
 
         dot.addEventListener("click", () => {
           showSlide(index);
@@ -554,14 +1071,26 @@
           const isActive = dotIndex === currentIndex;
 
           dot.classList.toggle("active", isActive);
+
           dot.setAttribute(
             "aria-current",
             isActive ? "true" : "false"
           );
         });
 
+        const currentSlide = slides[currentIndex];
+
+        captionNumber.textContent =
+          currentSlide.dataset.number;
+
+        captionTitle.textContent =
+          currentSlide.dataset.title;
+
         description.textContent =
-          slides[currentIndex].dataset.description;
+          currentSlide.dataset.description;
+
+        position.textContent =
+          `${formatNumber(currentIndex + 1)} / ${formatNumber(slides.length)}`;
       }
 
       previousButton.addEventListener("click", () => {
@@ -587,7 +1116,8 @@
       carousel.addEventListener(
         "touchstart",
         (event) => {
-          touchStartX = event.changedTouches[0].clientX;
+          touchStartX =
+            event.changedTouches[0].clientX;
         },
         { passive: true }
       );
@@ -595,8 +1125,11 @@
       carousel.addEventListener(
         "touchend",
         (event) => {
-          const touchEndX = event.changedTouches[0].clientX;
-          const distance = touchEndX - touchStartX;
+          const touchEndX =
+            event.changedTouches[0].clientX;
+
+          const distance =
+            touchEndX - touchStartX;
 
           if (Math.abs(distance) < 50) {
             return;
