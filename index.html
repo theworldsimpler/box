@@ -1,19 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
 
-  <meta
-    name="description"
-    content="Box modular habitat platform across Earth, Moon and Mars deployment environments."
-  >
+>
 
-  <title>Box | Earth</title>
+<meta
+name="description"
+content="The World Simpler — Grid and Box projects."
+
+>
+
+  <title>The World Simpler</title>
 
   <style>
     :root {
@@ -30,12 +33,9 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     html,
     body {
+      min-height: 100%;
       margin: 0;
       padding: 0;
       background: var(--white);
@@ -55,13 +55,9 @@
       line-height: 1.5;
     }
 
-    button,
     a {
-      font: inherit;
-    }
-
-    button {
       color: inherit;
+      font: inherit;
     }
 
     ::selection {
@@ -69,34 +65,12 @@
       color: var(--white);
     }
 
-    .world-page,
-    .project-footer {
+    .page {
       width: min(1200px, 100%);
+      min-height: calc(100vh - 80px);
       margin: 0 auto;
-    }
-
-    .world-page[hidden] {
-      display: none;
-    }
-
-    .world-page {
-      animation: reveal 240ms ease;
-    }
-
-    @keyframes reveal {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .project-header {
-      margin-bottom: 112px;
+      display: flex;
+      flex-direction: column;
     }
 
     .header-index {
@@ -104,7 +78,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      margin-bottom: 24px;
+      margin-bottom: 72px;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--accent);
       color: var(--accent);
@@ -114,283 +88,77 @@
       text-transform: uppercase;
     }
 
-    .header-row {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 28px;
-    }
-
-    .world-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding-top: 10px;
-    }
-
-    .world-nav a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 76px;
-      padding: 9px 14px;
-      border: 1px solid var(--gray-200);
-      border-radius: 999px;
-      color: var(--gray-600);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: 180ms ease;
-    }
-
-    .world-nav a:hover,
-    .world-nav a:focus-visible {
-      border-color: var(--accent);
-      color: var(--accent);
-      outline: none;
-    }
-
-    .world-nav a[aria-current="page"] {
-      border-color: var(--accent);
-      background: var(--accent);
-      color: var(--white);
-    }
-
-    h1,
-    h2,
-    h3 {
-      margin-top: 0;
-      letter-spacing: -0.04em;
+    .hero {
+      margin-bottom: 120px;
     }
 
     h1 {
-      max-width: 900px;
-      margin: 0 0 32px;
+      max-width: 1000px;
+      margin: 0 0 34px;
       font-size: clamp(4rem, 12vw, 9rem);
       font-weight: 700;
+      letter-spacing: -0.07em;
       line-height: 0.82;
     }
 
-    .project-intro {
-      max-width: 800px;
+    .intro {
+      max-width: 720px;
       margin: 0;
       color: var(--gray-600);
       font-size: clamp(1rem, 2vw, 1.2rem);
       line-height: 1.65;
     }
 
-    .carousel-section {
-      margin-bottom: 140px;
-    }
-
-    .carousel {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      background: var(--gray-100);
-      outline: none;
-    }
-
-    .carousel:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 4px;
-    }
-
-    .carousel-track {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 3 / 2;
-    }
-
-    .slide {
-      position: absolute;
-      inset: 0;
-      margin: 0;
-      opacity: 0;
-      visibility: hidden;
-      transition:
-        opacity 400ms ease,
-        visibility 400ms ease;
-    }
-
-    .slide.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .image-number,
-    .carousel-position {
-      position: absolute;
-      top: 20px;
-      z-index: 2;
-      padding: 8px 11px;
-      background: var(--accent);
-      color: var(--white);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .image-number {
-      left: 20px;
-    }
-
-    .carousel-position {
-      right: 20px;
-      min-width: 72px;
-      text-align: center;
-    }
-
-    .carousel-button {
-      position: absolute;
-      top: 50%;
-      z-index: 3;
-      display: grid;
-      width: 48px;
-      height: 48px;
-      padding: 0;
-      border: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--black);
-      font-size: 26px;
-      cursor: pointer;
-      place-items: center;
-      transform: translateY(-50%);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      transition:
-        background 180ms ease,
-        color 180ms ease,
-        transform 180ms ease;
-    }
-
-    .carousel-button:hover {
-      background: var(--accent-hover);
-      color: var(--white);
-      transform: translateY(-50%) scale(1.05);
-    }
-
-    .carousel-button:focus-visible,
-    .carousel-dot:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-
-    .carousel-button.previous {
-      left: 18px;
-    }
-
-    .carousel-button.next {
-      right: 18px;
-    }
-
-    .carousel-footer {
-      display: grid;
-      grid-template-columns: 100px minmax(0, 1fr) auto;
-      gap: 24px;
-      align-items: start;
-      padding-top: 22px;
-    }
-
-    .caption-number {
-      color: var(--accent);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-    }
-
-    .caption-title {
-      margin: 0 0 8px;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-
-    .image-description {
-      max-width: 820px;
-      margin: 0;
-      color: var(--gray-600);
-      font-size: 0.94rem;
-      line-height: 1.65;
-    }
-
-    .carousel-dots {
-      display: flex;
-      flex-shrink: 0;
-      justify-content: center;
-      gap: 9px;
-      padding-top: 7px;
-    }
-
-    .carousel-dot {
-      display: grid;
-      width: 28px;
-      height: 28px;
-      padding: 0;
-      border: 1px solid var(--gray-200);
-      border-radius: 50%;
-      background: transparent;
-      color: var(--gray-600);
-      font-size: 0.64rem;
-      font-weight: 600;
-      cursor: pointer;
-      place-items: center;
-      transition:
-        background 180ms ease,
-        color 180ms ease,
-        border-color 180ms ease;
-    }
-
-    .carousel-dot:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .carousel-dot.active {
-      border-color: var(--accent);
-      background: var(--accent);
-      color: var(--white);
-    }
-
-    /*
-      The heading, description and priorities appear
-      after each carousel.
-    */
-    .section-heading {
-      display: grid;
-      grid-template-columns: 100px minmax(0, 1fr);
-      gap: 32px;
-      margin-top: 48px;
-      padding-top: 22px;
+    .projects {
+      margin-top: auto;
       border-top: 1px solid var(--accent);
     }
 
-    .section-number {
+    .project-link {
+      display: grid;
+      grid-template-columns: 100px minmax(0, 1fr) auto;
+      gap: 32px;
+      align-items: center;
+      min-height: 180px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--gray-200);
+      text-decoration: none;
+      transition:
+        background 180ms ease,
+        color 180ms ease;
+    }
+
+    .project-link:hover,
+    .project-link:focus-visible {
+      background: var(--accent);
+      color: var(--white);
+      outline: none;
+    }
+
+    .project-link:hover .project-number,
+    .project-link:hover .project-description,
+    .project-link:hover .project-meta,
+    .project-link:focus-visible .project-number,
+    .project-link:focus-visible .project-description,
+    .project-link:focus-visible .project-meta {
+      color: var(--white);
+    }
+
+    .project-number {
+      align-self: start;
+      padding-top: 8px;
       color: var(--accent);
-      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: -0.06em;
-      line-height: 1;
+      letter-spacing: 0.1em;
+      transition: color 180ms ease;
     }
 
-    .section-copy {
-      max-width: 850px;
+    .project-content {
+      max-width: 760px;
     }
 
-    .section-meta {
+    .project-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 8px 18px;
@@ -400,68 +168,47 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+      transition: color 180ms ease;
     }
 
-    .section-copy h2 {
-      margin-bottom: 14px;
-      font-size: clamp(2rem, 5vw, 4rem);
+    .project-title {
+      margin: 0 0 14px;
+      font-size: clamp(2.5rem, 6vw, 5rem);
       font-weight: 600;
-      line-height: 0.95;
+      letter-spacing: -0.06em;
+      line-height: 0.9;
     }
 
-    .section-description {
-      max-width: 820px;
+    .project-description {
+      max-width: 620px;
       margin: 0;
       color: var(--gray-600);
-      font-size: 1rem;
-      line-height: 1.7;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      transition: color 180ms ease;
     }
 
-    .numbered-priorities {
+    .project-arrow {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      margin: 28px 0 0;
-      border-top: 1px solid var(--gray-200);
-      border-bottom: 1px solid var(--gray-200);
+      width: 54px;
+      height: 54px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      place-items: center;
+      transition: transform 180ms ease;
     }
 
-    .priority {
-      padding: 18px 18px 18px 0;
-      border-right: 1px solid var(--gray-200);
+    .project-link:hover .project-arrow,
+    .project-link:focus-visible .project-arrow {
+      transform: translateX(6px);
     }
 
-    .priority:not(:first-child) {
-      padding-left: 18px;
-    }
-
-    .priority:last-child {
-      border-right: 0;
-    }
-
-    .priority-number {
-      display: block;
-      margin-bottom: 12px;
-      color: var(--accent);
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-    }
-
-    .priority-name {
-      display: block;
-      font-size: 0.84rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .project-footer {
+    .footer {
       display: grid;
       grid-template-columns: 100px minmax(0, 1fr);
       gap: 32px;
-      margin-top: 30px;
-      padding: 24px 0 60px;
-      border-top: 1px solid var(--accent);
+      padding: 24px 0 20px;
     }
 
     .footer-number {
@@ -472,7 +219,7 @@
     }
 
     .footer-copy {
-      max-width: 760px;
+      max-width: 720px;
       margin: 0;
       color: var(--gray-600);
       font-size: 0.82rem;
@@ -484,1159 +231,150 @@
         padding: 24px 16px;
       }
 
-      .project-header {
+      .page {
+        min-height: calc(100vh - 48px);
+      }
+
+      .header-index {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 56px;
+      }
+
+      .hero {
         margin-bottom: 80px;
       }
 
-      .header-index,
-      .header-row {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
       h1 {
-        margin-bottom: 24px;
+        margin-bottom: 26px;
       }
 
-      .world-nav {
+      .project-link {
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        min-height: 0;
+        padding: 28px 0;
+      }
+
+      .project-number {
+        grid-column: 1 / -1;
         padding-top: 0;
       }
 
-      .carousel-section {
-        margin-bottom: 88px;
+      .project-content {
+        grid-column: 1;
       }
 
-      .carousel-track {
-        aspect-ratio: 4 / 3;
+      .project-arrow {
+        grid-column: 2;
+        align-self: end;
+        width: 46px;
+        height: 46px;
       }
 
-      .carousel-button {
-        width: 40px;
-        height: 40px;
-      }
-
-      .carousel-button.previous {
-        left: 10px;
-      }
-
-      .carousel-button.next {
-        right: 10px;
-      }
-
-      .image-number {
-        top: 12px;
-        left: 12px;
-      }
-
-      .carousel-position {
-        top: 12px;
-        right: 12px;
-      }
-
-      .carousel-footer,
-      .section-heading,
-      .project-footer {
+      .footer {
         grid-template-columns: 1fr;
-      }
-
-      .carousel-footer {
         gap: 10px;
-      }
-
-      .carousel-dots {
-        justify-content: flex-start;
-        margin-top: 8px;
-      }
-
-      .section-heading {
-        gap: 18px;
-      }
-
-      .numbered-priorities {
-        grid-template-columns: 1fr;
-      }
-
-      .priority,
-      .priority:not(:first-child) {
-        padding: 16px 0;
-        border-right: 0;
-        border-bottom: 1px solid var(--gray-200);
-      }
-
-      .priority:last-child {
-        border-bottom: 0;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .world-page,
-      .slide,
-      .carousel-button,
-      .carousel-dot {
-        animation: none;
+      .project-link,
+      .project-arrow,
+      .project-number,
+      .project-meta,
+      .project-description {
         transition: none;
       }
     }
   </style>
+
 </head>
 
 <body>
-  <div id="app"></div>
+  <div class="page">
+    <header>
+      <div class="header-index">
+        <span>01 / 01 — Project index</span>
+        <span>Selected work — 2026</span>
+      </div>
 
-  <footer class="project-footer">
-    <div class="footer-number">27 / 27</div>
+```
+  <div class="hero">
+    <h1>The World Simpler</h1>
 
-    <p class="footer-copy">
-      All images and system descriptions represent a concept-stage product
-      direction. Manufacturing specifications, engineering performance,
-      certification requirements, deployment schedules and commercial metrics
-      remain subject to validation and development.
+    <p class="intro">
+      A collection of systems, structures and modular ideas designed
+      to make complex environments simpler.
     </p>
-  </footer>
-
-  <script>
-    const worlds = {
-      earth: {
-        label: "Earth",
-        index: "01 / 03 — Earth platform",
-        stage: "Concept stage — 2026",
-
-        intro:
-          "One modular habitat platform organized around three coordinated layers: a repeatable exterior enclosure, an efficient occupant module and a centralized utility system.",
-
-        sections: [
-          {
-            number: "01",
-
-            meta: [
-              "01 / 03",
-              "03 exterior views",
-              "Layer 01"
-            ],
-
-            title: "Exterior platform",
-
-            description:
-              "Box is conceived as a prefabricated enclosure platform for remote and infrastructure-constrained sites. Its rectilinear geometry, repeatable panel system and concentrated service architecture are intended to reduce component variation, simplify transportation and move a greater proportion of construction into a controlled manufacturing environment.",
-
-            priorities: [
-              ["01.1", "Repeatable enclosure"],
-              ["01.2", "Transport planning"],
-              ["01.3", "Rapid deployment"]
-            ],
-
-            aria: "Earth exterior image gallery",
-
-            images: [
-              {
-                src: "1.png",
-                number: "01.1",
-                title: "Remote deployment configuration",
-                alt: "Box deployed beside a glacial lake in a remote mountain environment",
-
-                description:
-                  "Concept visualization of Box deployed in an alpine environment. The compact building envelope and integrated utility strategy are intended to reduce site preparation, shorten installation time and limit weather exposure during commissioning."
-              },
-
-              {
-                src: "2.png",
-                number: "01.2",
-                title: "Longitudinal enclosure elevation",
-                alt: "Longitudinal exterior view of the metal enclosure",
-
-                description:
-                  "The longitudinal elevation illustrates a low-part-count exterior assembly with large-format metal panels. The proposed envelope is organized for repeatable fabrication, replaceable surface components and simplified inspection across the full structure."
-              },
-
-              {
-                src: "3.png",
-                number: "01.3",
-                title: "Standardized structural bay system",
-                alt: "Primary exterior elevation showing the modular panel system",
-
-                description:
-                  "The primary elevation shows standardized structural bay spacing and modular panel divisions. The proportions are intended to support transport planning, repeatable assembly and multiple internal configurations built on one enclosure platform."
-              }
-            ]
-          },
-
-          {
-            number: "02",
-
-            meta: [
-              "02 / 03",
-              "03 interior views",
-              "Layer 02"
-            ],
-
-            title: "Occupant module",
-
-            description:
-              "The occupied volume is organized around a compact service spine and a small number of repeatable interior assemblies. Concentrating plumbing, ventilation and electrical interfaces into defined zones is intended to reduce installation complexity, preserve usable floor area and support factory-level quality control.",
-
-            priorities: [
-              ["02.1", "Sleeping zone"],
-              ["02.2", "Wet-room core"],
-              ["02.3", "Integrated galley"]
-            ],
-
-            aria: "Earth occupant module image gallery",
-
-            images: [
-              {
-                src: "4.png",
-                number: "02.1",
-                title: "Primary sleeping zone",
-                alt: "Sleeping area inside the modular habitat",
-
-                description:
-                  "The sleeping zone is positioned on the primary glazed elevation to provide daylight, visual connection to the site and a clear internal circulation path. The low-profile furniture strategy preserves usable wall area for integrated storage and building services."
-              },
-
-              {
-                src: "5.png",
-                number: "02.2",
-                title: "Consolidated wet-room core",
-                alt: "Compact bathroom and wet-room service core",
-
-                description:
-                  "The wet-room core consolidates water supply, drainage, ventilation and waterproofed surfaces into one compact technical zone. Shorter service runs and accessible connection points are intended to simplify factory testing, field installation and future maintenance."
-              },
-
-              {
-                src: "6.png",
-                number: "02.3",
-                title: "Integrated galley system",
-                alt: "Integrated galley kitchen inside the modular habitat",
-
-                description:
-                  "The galley kitchen uses parallel work surfaces, integrated appliances and full-height storage to maximize functional capacity within a narrow footprint. Major utility connections align with the central service architecture to minimize distributed plumbing and electrical runs."
-              }
-            ]
-          },
-
-          {
-            number: "03",
-
-            meta: [
-              "03 / 03",
-              "03 systems views",
-              "Layer 03"
-            ],
-
-            title: "Integrated utility systems",
-
-            description:
-              "The proposed utility module centralizes water handling, thermal management, ventilation, electrical distribution, sensing and control equipment inside a serviceable enclosure. The architecture is intended to support pre-assembly, structured commissioning, remote diagnostics and subsystem replacement.",
-
-            priorities: [
-              ["03.1", "Utility module"],
-              ["03.2", "Hydraulic network"],
-              ["03.3", "Air and controls"]
-            ],
-
-            aria: "Earth integrated utility systems image gallery",
-
-            images: [
-              {
-                src: "7.png",
-                number: "03.1",
-                title: "Integrated utility module",
-                alt: "Complete integrated utility module",
-
-                description:
-                  "System-level view of the proposed utility module, combining hydraulic circuits, storage vessels, control enclosures and air-handling equipment within a defined mechanical package. Standardized interfaces are intended to allow testing before integration with the occupied enclosure."
-              },
-
-              {
-                src: "8.png",
-                number: "03.2",
-                title: "Hydraulic distribution network",
-                alt: "Hydraulic distribution and water-management components",
-
-                description:
-                  "Detailed hydraulic zone showing distribution manifolds, isolation valves, pressure-control components, instrumentation and service connections. Centralized routing is intended to improve inspection access, support fault isolation and reduce intervention inside finished spaces."
-              },
-
-              {
-                src: "9.png",
-                number: "03.3",
-                title: "Air-handling and control zone",
-                alt: "Air-handling and electrical-control equipment",
-
-                description:
-                  "Air-handling and electrical-control zone showing enclosed distribution cabinets, organized conduit runs and ducted thermal-management components. Separating control equipment from primary wet-service assemblies is intended to improve maintainability and reduce cross-system exposure."
-              }
-            ]
-          }
-        ]
-      },
-
-      moon: {
-        label: "Moon",
-        index: "02 / 03 — Lunar platform",
-        stage: "Lunar deployment study — 2026",
-
-        intro:
-          "The same repeatable enclosure, occupant module and centralized utility architecture considered for a lunar surface deployment scenario.",
-
-        sections: [
-          {
-            number: "01",
-
-            meta: [
-              "01 / 03",
-              "03 lunar exterior views",
-              "Layer 01"
-            ],
-
-            title: "Lunar exterior platform",
-
-            description:
-              "The enclosure is shown as a compact prefabricated shell for low-infrastructure lunar deployment. A restrained geometry, standardized panel rhythm and concentrated service layout support repeatable transport, assembly and inspection.",
-
-            priorities: [
-              ["01.1", "Compact transport"],
-              ["01.2", "Sealed enclosure"],
-              ["01.3", "Surface deployment"]
-            ],
-
-            aria: "Moon exterior image gallery",
-
-            images: [
-              {
-                src: "10.png",
-                number: "01.1",
-                title: "Lunar approach configuration",
-                alt: "Modular habitat positioned on a lunar surface",
-
-                description:
-                  "A distant approach view emphasizes the compact external volume and the relationship between the enclosure and an exposed lunar terrain."
-              },
-
-              {
-                src: "11.png",
-                number: "01.2",
-                title: "Lunar longitudinal enclosure",
-                alt: "Long side of the habitat on a lunar surface",
-
-                description:
-                  "The longitudinal view highlights standardized cladding bays, minimal external complexity and a transport-oriented rectangular form."
-              },
-
-              {
-                src: "12.png",
-                number: "01.3",
-                title: "Lunar elevation system",
-                alt: "Front elevation of the modular enclosure on the Moon",
-
-                description:
-                  "The primary elevation presents a repeatable panel system intended to simplify fabrication, replacement and visual inspection."
-              }
-            ]
-          },
-
-          {
-            number: "02",
-
-            meta: [
-              "02 / 03",
-              "03 lunar interior views",
-              "Layer 02"
-            ],
-
-            title: "Lunar occupant module",
-
-            description:
-              "The lunar interior maintains the same clear circulation, compact sleeping zone, consolidated wet-room core and integrated galley. The limited component set supports controlled assembly and service access.",
-
-            priorities: [
-              ["02.1", "Rest and recovery"],
-              ["02.2", "Hygiene core"],
-              ["02.3", "Food preparation"]
-            ],
-
-            aria: "Moon occupant module image gallery",
-
-            images: [
-              {
-                src: "13.png",
-                number: "02.1",
-                title: "Lunar sleeping zone",
-                alt: "Minimal sleeping area looking onto the lunar surface",
-
-                description:
-                  "The sleeping area provides a protected, low-clutter retreat with a direct visual connection to the surrounding lunar landscape."
-              },
-
-              {
-                src: "14.png",
-                number: "02.2",
-                title: "Lunar wet-room core",
-                alt: "Compact bathroom inside the lunar habitat",
-
-                description:
-                  "Water, drainage and ventilation interfaces are grouped into one compact wet-service zone for simplified access and maintenance."
-              },
-
-              {
-                src: "15.png",
-                number: "02.3",
-                title: "Lunar galley",
-                alt: "Minimal galley kitchen looking onto the lunar surface",
-
-                description:
-                  "The parallel galley arrangement maximizes storage and work surface while keeping utilities aligned with the central service spine."
-              }
-            ]
-          },
-
-          {
-            number: "03",
-
-            meta: [
-              "03 / 03",
-              "03 lunar systems views",
-              "Layer 03"
-            ],
-
-            title: "Lunar utility systems",
-
-            description:
-              "Water handling, air management, thermal control, electrical distribution and monitoring equipment are consolidated within a serviceable module designed for pre-assembly and structured commissioning.",
-
-            priorities: [
-              ["03.1", "Life-support package"],
-              ["03.2", "Fluid management"],
-              ["03.3", "Air and controls"]
-            ],
-
-            aria: "Moon utility systems image gallery",
-
-            images: [
-              {
-                src: "16.png",
-                number: "03.1",
-                title: "Lunar utility module",
-                alt: "Complete metallic utility module",
-
-                description:
-                  "The complete service package combines fluid circuits, pressure vessels, electrical cabinets and air-handling equipment in one testable enclosure."
-              },
-
-              {
-                src: "17.png",
-                number: "03.2",
-                title: "Lunar hydraulic network",
-                alt: "Detailed metallic pipe and valve network",
-
-                description:
-                  "A dense but organized hydraulic zone provides isolation, regulation, measurement and service access from a single technical bay."
-              },
-
-              {
-                src: "18.png",
-                number: "03.3",
-                title: "Lunar air and control zone",
-                alt: "Electrical cabinets and air-handling equipment",
-
-                description:
-                  "Control enclosures and ducted air equipment are separated from the primary wet-service assemblies to support safe maintenance."
-              }
-            ]
-          }
-        ]
-      },
-
-      mars: {
-        label: "Mars",
-        index: "03 / 03 — Mars platform",
-        stage: "Mars deployment study — 2026",
-
-        intro:
-          "A third deployment study applies the same modular product logic to a Mars surface scenario while preserving the enclosure, interior and utility layers.",
-
-        sections: [
-          {
-            number: "01",
-
-            meta: [
-              "01 / 03",
-              "03 Mars exterior views",
-              "Layer 01"
-            ],
-
-            title: "Mars exterior platform",
-
-            description:
-              "The Mars platform retains a compact rectilinear shell and repeatable panel architecture. The system is intended to minimize field assembly, reduce part variation and support rapid deployment in remote surface conditions.",
-
-            priorities: [
-              ["01.1", "Remote delivery"],
-              ["01.2", "Repeatable shell"],
-              ["01.3", "Fast commissioning"]
-            ],
-
-            aria: "Mars exterior image gallery",
-
-            images: [
-              {
-                src: "19.png",
-                number: "01.1",
-                title: "Mars approach configuration",
-                alt: "Modular habitat in a pale Mars deployment landscape",
-
-                description:
-                  "The approach image presents the habitat as a compact manufactured object placed within a vast remote landscape."
-              },
-
-              {
-                src: "20(1).png",
-                number: "01.2",
-                title: "Mars longitudinal enclosure",
-                alt: "Long side of the habitat in a Mars deployment landscape",
-
-                description:
-                  "The long elevation emphasizes the low-part-count exterior, standardized panels and transport-ready proportions."
-              },
-
-              {
-                src: "21.png",
-                number: "01.3",
-                title: "Mars elevation system",
-                alt: "Front elevation of the modular habitat on Mars",
-
-                description:
-                  "The primary elevation shows a consistent bay system that can support repeatable manufacturing and multiple internal programs."
-              }
-            ]
-          },
-
-          {
-            number: "02",
-
-            meta: [
-              "02 / 03",
-              "03 Mars interior views",
-              "Layer 02"
-            ],
-
-            title: "Mars occupant module",
-
-            description:
-              "The occupant module is organized as a calm, low-clutter interior with a compact service spine. Sleeping, hygiene and food-preparation functions are arranged as repeatable factory-built assemblies.",
-
-            priorities: [
-              ["02.1", "Sleeping zone"],
-              ["02.2", "Wet-room core"],
-              ["02.3", "Integrated galley"]
-            ],
-
-            aria: "Mars occupant module image gallery",
-
-            images: [
-              {
-                src: "22.png",
-                number: "02.1",
-                title: "Mars sleeping zone",
-                alt: "Minimal sleeping area looking onto a Mars landscape",
-
-                description:
-                  "The sleeping zone is oriented toward the primary glazed elevation while preserving clear circulation and integrated wall storage."
-              },
-
-              {
-                src: "23.png",
-                number: "02.2",
-                title: "Mars wet-room core",
-                alt: "Compact bathroom inside the Mars habitat",
-
-                description:
-                  "The wet-room groups waterproof surfaces, plumbing, ventilation and access points in a single serviceable zone."
-              },
-
-              {
-                src: "24.png",
-                number: "02.3",
-                title: "Mars galley",
-                alt: "Minimal galley kitchen looking onto a Mars landscape",
-
-                description:
-                  "The galley combines parallel work surfaces, integrated appliances and full-height storage within a narrow footprint."
-              }
-            ]
-          },
-
-          {
-            number: "03",
-
-            meta: [
-              "03 / 03",
-              "03 Mars systems views",
-              "Layer 03"
-            ],
-
-            title: "Mars utility systems",
-
-            description:
-              "The technical layer consolidates thermal management, ventilation, fluid handling, electrical distribution, sensing and control equipment into a replaceable service package.",
-
-            priorities: [
-              ["03.1", "Utility module"],
-              ["03.2", "Hydraulic network"],
-              ["03.3", "Air and controls"]
-            ],
-
-            aria: "Mars utility systems image gallery",
-
-            images: [
-              {
-                src: "25.png",
-                number: "03.1",
-                title: "Mars utility module",
-                alt: "Complete integrated metallic utility module",
-
-                description:
-                  "A system-level view combines hydraulic circuits, storage vessels, controls and air equipment within a defined mechanical package."
-              },
-
-              {
-                src: "26.png",
-                number: "03.2",
-                title: "Mars hydraulic network",
-                alt: "Detailed hydraulic distribution components",
-
-                description:
-                  "Centralized manifolds, valves, instruments and service connections improve inspection access and support fault isolation."
-              },
-
-              {
-                src: "27.png",
-                number: "03.3",
-                title: "Mars air and control zone",
-                alt: "Air-handling and electrical-control equipment",
-
-                description:
-                  "Organized electrical enclosures, conduit runs and ducted thermal equipment are grouped for structured maintenance and replacement."
-              }
-            ]
-          }
-        ]
-      }
-    };
-
-    const worldOrder = [
-      "earth",
-      "moon",
-      "mars"
-    ];
-
-    const app = document.querySelector("#app");
-
-    const escapeHTML = (value) =>
-      String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-
-    function createNav(activeWorld) {
-      return `
-        <nav
-          class="world-nav"
-          aria-label="Deployment environments"
-        >
-          ${worldOrder
-            .map(
-              (world) => `
-                <a
-                  href="#${world}"
-                  data-world-link="${world}"
-                  ${
-                    world === activeWorld
-                      ? 'aria-current="page"'
-                      : ""
-                  }
-                >
-                  ${escapeHTML(worlds[world].label)}
-                </a>
-              `
-            )
-            .join("")}
-        </nav>
-      `;
-    }
-
-    function createSection(section) {
-      return `
-        <section class="carousel-section">
-          <div
-            class="carousel"
-            aria-label="${escapeHTML(section.aria)}"
-            tabindex="0"
-          >
-            <div class="carousel-track">
-              ${section.images
-                .map(
-                  (image, index) => `
-                    <figure
-                      class="slide${index === 0 ? " active" : ""}"
-                      data-number="${escapeHTML(image.number)}"
-                      data-title="${escapeHTML(image.title)}"
-                      data-description="${escapeHTML(
-                        image.description
-                      )}"
-                      ${
-                        index === 0
-                          ? 'aria-hidden="false"'
-                          : 'aria-hidden="true"'
-                      }
-                    >
-                      <span class="image-number">
-                        ${escapeHTML(image.number)}
-                      </span>
-
-                      <img
-                        src="${escapeHTML(image.src)}"
-                        alt="${escapeHTML(image.alt)}"
-                        loading="lazy"
-                        decoding="async"
-                      >
-                    </figure>
-                  `
-                )
-                .join("")}
-            </div>
-
-            <div
-              class="carousel-position"
-              aria-live="polite"
-            >
-              01 / 03
-            </div>
-
-            <button
-              class="carousel-button previous"
-              type="button"
-              aria-label="Show previous image"
-            >
-              &#8249;
-            </button>
-
-            <button
-              class="carousel-button next"
-              type="button"
-              aria-label="Show next image"
-            >
-              &#8250;
-            </button>
-          </div>
-
-          <div class="carousel-footer">
-            <div class="caption-number">
-              ${escapeHTML(section.images[0].number)}
-            </div>
-
-            <div>
-              <h3 class="caption-title">
-                ${escapeHTML(section.images[0].title)}
-              </h3>
-
-              <p
-                class="image-description"
-                aria-live="polite"
-              >
-                ${escapeHTML(section.images[0].description)}
-              </p>
-            </div>
-
-            <div
-              class="carousel-dots"
-              aria-label="Choose an image"
-            ></div>
-          </div>
-
-          <div class="section-heading">
-            <div class="section-number">
-              ${escapeHTML(section.number)}
-            </div>
-
-            <div class="section-copy">
-              <div class="section-meta">
-                ${section.meta
-                  .map(
-                    (item) =>
-                      `<span>${escapeHTML(item)}</span>`
-                  )
-                  .join("")}
-              </div>
-
-              <h2>
-                ${escapeHTML(section.title)}
-              </h2>
-
-              <p class="section-description">
-                ${escapeHTML(section.description)}
-              </p>
-
-              <div class="numbered-priorities">
-                ${section.priorities
-                  .map(
-                    ([number, name]) => `
-                      <div class="priority">
-                        <span class="priority-number">
-                          ${escapeHTML(number)}
-                        </span>
-
-                        <span class="priority-name">
-                          ${escapeHTML(name)}
-                        </span>
-                      </div>
-                    `
-                  )
-                  .join("")}
-              </div>
-            </div>
-          </div>
-        </section>
-      `;
-    }
-
-    function createWorldPage(worldKey) {
-      const world = worlds[worldKey];
-
-      return `
-        <div
-          class="world-page"
-          data-world="${worldKey}"
-          aria-label="${escapeHTML(
-            world.label
-          )} deployment page"
-          ${worldKey === "earth" ? "" : "hidden"}
-        >
-          <header class="project-header">
-            <div class="header-index">
-              <span>
-                ${escapeHTML(world.index)}
-              </span>
-
-              <span>
-                ${escapeHTML(world.stage)}
-              </span>
-            </div>
-
-            <div class="header-row">
-              <div>
-                <h1>Box</h1>
-
-                <p class="project-intro">
-                  ${escapeHTML(world.intro)}
-                </p>
-              </div>
-
-              ${createNav(worldKey)}
-            </div>
-          </header>
-
-          <main>
-            ${world.sections
-              .map(createSection)
-              .join("")}
-          </main>
-        </div>
-      `;
-    }
-
-    app.innerHTML = worldOrder
-      .map(createWorldPage)
-      .join("");
-
-    function formatNumber(number) {
-      return String(number).padStart(2, "0");
-    }
-
-    function initializeCarousel(section) {
-      const carousel =
-        section.querySelector(".carousel");
-
-      const slides = [
-        ...section.querySelectorAll(".slide")
-      ];
-
-      const previousButton =
-        section.querySelector(".previous");
-
-      const nextButton =
-        section.querySelector(".next");
-
-      const dotsContainer =
-        section.querySelector(".carousel-dots");
-
-      const description =
-        section.querySelector(".image-description");
-
-      const captionTitle =
-        section.querySelector(".caption-title");
-
-      const captionNumber =
-        section.querySelector(".caption-number");
-
-      const position =
-        section.querySelector(".carousel-position");
-
-      let currentIndex = 0;
-      let touchStartX = 0;
-
-      const dots = slides.map((slide, index) => {
-        const dot =
-          document.createElement("button");
-
-        dot.type = "button";
-        dot.className = "carousel-dot";
-        dot.textContent =
-          formatNumber(index + 1);
-
-        dot.setAttribute(
-          "aria-label",
-          `Show image ${index + 1} of ${slides.length}`
-        );
-
-        dot.addEventListener("click", () => {
-          showSlide(index);
-        });
-
-        dotsContainer.appendChild(dot);
-
-        return dot;
-      });
-
-      function showSlide(index) {
-        currentIndex =
-          (index + slides.length) %
-          slides.length;
-
-        slides.forEach(
-          (slide, slideIndex) => {
-            const isActive =
-              slideIndex === currentIndex;
-
-            slide.classList.toggle(
-              "active",
-              isActive
-            );
-
-            slide.setAttribute(
-              "aria-hidden",
-              String(!isActive)
-            );
-          }
-        );
-
-        dots.forEach((dot, dotIndex) => {
-          const isActive =
-            dotIndex === currentIndex;
-
-          dot.classList.toggle(
-            "active",
-            isActive
-          );
-
-          dot.setAttribute(
-            "aria-current",
-            isActive ? "true" : "false"
-          );
-        });
-
-        const currentSlide =
-          slides[currentIndex];
-
-        captionNumber.textContent =
-          currentSlide.dataset.number;
-
-        captionTitle.textContent =
-          currentSlide.dataset.title;
-
-        description.textContent =
-          currentSlide.dataset.description;
-
-        position.textContent =
-          `${formatNumber(
-            currentIndex + 1
-          )} / ${formatNumber(slides.length)}`;
-      }
-
-      previousButton.addEventListener(
-        "click",
-        () => {
-          showSlide(currentIndex - 1);
-        }
-      );
-
-      nextButton.addEventListener(
-        "click",
-        () => {
-          showSlide(currentIndex + 1);
-        }
-      );
-
-      carousel.addEventListener(
-        "keydown",
-        (event) => {
-          if (event.key === "ArrowLeft") {
-            event.preventDefault();
-            showSlide(currentIndex - 1);
-          }
-
-          if (event.key === "ArrowRight") {
-            event.preventDefault();
-            showSlide(currentIndex + 1);
-          }
-        }
-      );
-
-      carousel.addEventListener(
-        "touchstart",
-        (event) => {
-          touchStartX =
-            event.changedTouches[0].clientX;
-        },
-        {
-          passive: true
-        }
-      );
-
-      carousel.addEventListener(
-        "touchend",
-        (event) => {
-          const distance =
-            event.changedTouches[0].clientX -
-            touchStartX;
-
-          if (Math.abs(distance) < 50) {
-            return;
-          }
-
-          showSlide(
-            distance > 0
-              ? currentIndex - 1
-              : currentIndex + 1
-          );
-        },
-        {
-          passive: true
-        }
-      );
-
-      showSlide(0);
-    }
-
-    document
-      .querySelectorAll(".carousel-section")
-      .forEach(initializeCarousel);
-
-    function showWorld(
-      requestedWorld,
-      updateHash = false
-    ) {
-      const world =
-        worldOrder.includes(requestedWorld)
-          ? requestedWorld
-          : "earth";
-
-      document
-        .querySelectorAll(".world-page")
-        .forEach((page) => {
-          const isActive =
-            page.dataset.world === world;
-
-          page.hidden = !isActive;
-
-          page.setAttribute(
-            "aria-hidden",
-            String(!isActive)
-          );
-        });
-
-      document
-        .querySelectorAll("[data-world-link]")
-        .forEach((link) => {
-          const isActive =
-            link.dataset.worldLink === world;
-
-          if (isActive) {
-            link.setAttribute(
-              "aria-current",
-              "page"
-            );
-          } else {
-            link.removeAttribute(
-              "aria-current"
-            );
-          }
-        });
-
-      document.title =
-        `Box | ${worlds[world].label}`;
-
-      if (
-        updateHash &&
-        location.hash !== `#${world}`
-      ) {
-        history.pushState(
-          {
-            world
-          },
-          "",
-          `#${world}`
-        );
-      }
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    }
-
-    document.addEventListener(
-      "click",
-      (event) => {
-        const link =
-          event.target.closest(
-            "[data-world-link]"
-          );
-
-        if (!link) {
-          return;
-        }
-
-        event.preventDefault();
-
-        showWorld(
-          link.dataset.worldLink,
-          true
-        );
-      }
-    );
-
-    window.addEventListener(
-      "popstate",
-      () => {
-        showWorld(
-          location.hash.slice(1) ||
-          "earth"
-        );
-      }
-    );
-
-    showWorld(
-      location.hash.slice(1) ||
-      "earth"
-    );
-  </script>
+  </div>
+</header>
+
+<main class="projects" aria-label="Projects">
+  <a
+    class="project-link"
+    href="https://theworldsimpler.com/grid"
+  >
+    <div class="project-number">01 / 02</div>
+
+    <div class="project-content">
+      <div class="project-meta">
+        <span>System</span>
+        <span>Infrastructure</span>
+        <span>Grid</span>
+      </div>
+
+      <h2 class="project-title">Grid</h2>
+
+      <p class="project-description">
+        Explore the Grid project and its approach to structured,
+        repeatable systems.
+      </p>
+    </div>
+
+    <span class="project-arrow" aria-hidden="true">
+      &#8594;
+    </span>
+  </a>
+
+  <a
+    class="project-link"
+    href="https://theworldsimpler.com/box"
+  >
+    <div class="project-number">02 / 02</div>
+
+    <div class="project-content">
+      <div class="project-meta">
+        <span>Habitat</span>
+        <span>Modular platform</span>
+        <span>Box</span>
+      </div>
+
+      <h2 class="project-title">Box</h2>
+
+      <p class="project-description">
+        Explore the modular habitat platform across Earth, Moon
+        and Mars deployment environments.
+      </p>
+    </div>
+
+    <span class="project-arrow" aria-hidden="true">
+      &#8594;
+    </span>
+  </a>
+</main>
+
+<footer class="footer">
+  <div class="footer-number">02 / 02</div>
+
+  <p class="footer-copy">
+    The World Simpler develops concept-stage systems focused on
+    modularity, clarity and repeatable design.
+  </p>
+</footer>
+```
+
+  </div>
 </body>
 </html>
